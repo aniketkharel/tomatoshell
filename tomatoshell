@@ -52,11 +52,11 @@ total_hours_used() {
     awk -F ',' '{sum+=$2 * $3;} END{printf "%d", int(sum / 3600);}' $LOG
     printf "h 🍅🤓\n"
 }
-
+ 
 
 # TODO: add option for xdg-open
 find_sound_system() {
-    # added support for pipewire audio player, tested on pop-os (debian)
+    # added support for pipeware audio player, tested on pop-os
     # since, its packed with the OS.
     if command -v mpv &> /dev/null
     then
@@ -136,15 +136,15 @@ countdown() {
     display_countdown $start
     clear
 
-    [ $session_number -ne -1 ] && notify-send -t 10000 -u "normal" "Session number $session_number finished"
+    [ $session_number -ne -1 ] && notify-send -t 10000 -u "normal" "jatho ! dherai kaam nagaar, break li ! $session_number finished"
     
     # message when session is finished
     if $FIGLET
     then
-        [ $session_number -ne -1 ] && figlet -c -t "Session $session_number/$SESSIONS finished" || figlet -c -t "Break finished"
+        [ $session_number -ne -1 ] && figlet -c -t "Session $session_number/$SESSIONS finished" || figlet -c -t " aba kaam gaar jatho !"
     else
 
-        [ $session_number -ne -1 ] && echo -e ""$GREEN"Session $session_number/$SESSIONS finished$FIN" || echo -e "$GREEN""Break finished$FIN"
+        [ $session_number -ne -1 ] && echo -e ""$GREEN"Session $session_number/$SESSIONS finished$FIN" || echo -e "$GREEN""jatho ja kaam gaar !$FIN"
     fi
 
     # turn on keypress so we can receive input from user as to when to stop the alarm
